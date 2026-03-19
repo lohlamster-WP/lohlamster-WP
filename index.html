@@ -545,10 +545,9 @@
             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </div>
           <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">EMAIL</p>
-          <p class="text-lg font-bold text-gray-900 mb-1"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c9beb989beacabbdaca2e7a4b0">[email&#160;protected]</a></p>
+          <p class="text-lg font-bold text-gray-900 mb-1">wp@webtek.my</p>
           <p class="text-sm text-gray-400 mb-5">Send me a message directly</p>
-          <!-- Fixed: descriptive CTA label -->
-          <a href="/cdn-cgi/l/email-protection#2d5a5d6d5a484f594846034054" class="text-sm text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center gap-1">
+          <a href="mailto:wp@webtek.my" aria-label="Send email to wp@webtek.my" class="text-sm text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center gap-1">
             Send email <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
         </div>
@@ -642,3 +641,20 @@
 
       if (pastHero) {
         // Over light sections: white nav with dark text
+        navbar.classList.add('light-nav');
+        hamburgerIcon.setAttribute('stroke', '#1e293b');
+      } else if (scrolled) {
+        // Scrolled but still over hero: dark scrolled nav
+        navbar.classList.add('scrolled');
+        hamburgerIcon.setAttribute('stroke', 'white');
+      } else {
+        // Top of page: transparent
+        hamburgerIcon.setAttribute('stroke', 'white');
+      }
+    }
+
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+  </script>
+</body>
+</html>
