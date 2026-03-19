@@ -104,7 +104,7 @@
     /* Mobile menu */
     #mobile-menu {
       display: none;
-      position: fixed; inset: 0; z-index: 40;
+      position: fixed; inset: 0; z-index: 9999;
       background: rgba(2,6,23,0.98);
       backdrop-filter: blur(16px);
       flex-direction: column;
@@ -121,6 +121,23 @@
       transition: color 0.2s;
     }
     #mobile-menu a:hover { color: #38bdf8; }
+    #mobile-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: background 0.2s;
+    }
+    #mobile-close:hover { background: rgba(255,255,255,0.25); }
     #hamburger { display: none; }
     @media (max-width: 767px) {
       #hamburger { display: flex; }
@@ -140,8 +157,11 @@
 
   <!-- Mobile Menu Overlay -->
   <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
-    <button id="mobile-close" aria-label="Close menu" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;cursor:pointer;">
-      <svg width="28" height="28" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    <button id="mobile-close" aria-label="Close menu">
+      <svg width="24" height="24" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
     </button>
     <a href="#home" onclick="closeMobileMenu()">Home</a>
     <a href="#about" onclick="closeMobileMenu()">About</a>
