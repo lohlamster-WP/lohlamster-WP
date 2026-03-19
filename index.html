@@ -23,14 +23,50 @@
   <meta property="og:image:height" content="400">
   <meta property="og:locale" content="en_MY">
 
+  <!-- SEO: Keywords -->
+  <meta name="keywords" content="Wayne Poon, Webtek, Webtek Sdn Bhd, Malaysia, Software Development, Mobile App, AI Automation, Digital Transformation, SME, Startup, Laravel, React Native, Flutter">
+
+  <!-- SEO: Open Graph extras -->
+  <meta property="og:image:alt" content="Wayne Poon, Founder and CEO of Webtek Sdn Bhd">
+  <meta property="og:site_name" content="Wayne Poon">
+
   <!-- SEO: Twitter/X Card -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://waynepoon.me">
   <meta name="twitter:title" content="Wayne Poon — Founder & CEO · Webtek Sdn Bhd">
   <meta name="twitter:description" content="Wayne Poon is the Founder & CEO of Webtek Sdn Bhd — delivering mobile apps, AI automation, and digital solutions for SMEs and startups in Malaysia.">
   <meta name="twitter:image" content="https://cdn.hercules.app/file_oCiDBocDjrH8ZOMG9V61pGhc">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://cdn.hercules.app/file_oCiDBocDjrH8ZOMG9V61pGhc">
+  <link rel="apple-touch-icon" href="https://cdn.hercules.app/file_oCiDBocDjrH8ZOMG9V61pGhc">
+
+  <!-- SEO: Schema Markup (Structured Data for Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Wayne Poon",
+    "jobTitle": "Founder & CEO",
+    "description": "Malaysian technology entrepreneur specialising in mobile apps, software development, AI automation, and digital platform solutions.",
+    "url": "https://waynepoon.me",
+    "email": "wp@webtek.my",
+    "telephone": "+60123230689",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "MY",
+      "addressRegion": "Selangor"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Webtek Sdn Bhd",
+      "url": "https://webtek.my"
+    },
+    "sameAs": ["https://webtek.my"],
+    "image": "https://cdn.hercules.app/file_oCiDBocDjrH8ZOMG9V61pGhc",
+    "knowsAbout": ["Software Development","Mobile App Development","AI Automation","Digital Transformation","Laravel","React Native","Flutter","Python"]
+  }
+  </script>
 
   <!-- Performance: Tailwind via CDN (replace with compiled build for production) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -213,7 +249,7 @@
           <div class="flex items-center gap-5 p-5 rounded-2xl border" style="background: linear-gradient(to bottom right, rgba(37,99,235,0.1), rgba(6,182,212,0.1)); border-color: rgba(37,99,235,0.2);">
             <div class="w-16 h-16 rounded-xl overflow-hidden border-2 flex-shrink-0" style="border-color: rgba(37,99,235,0.2);">
               <img src="https://cdn.hercules.app/file_oCiDBocDjrH8ZOMG9V61pGhc"
-                   alt=""
+                   alt="Wayne Poon, Founder and CEO of Webtek Sdn Bhd"
                    width="64" height="64"
                    loading="lazy"
                    class="w-full h-full object-cover object-top">
@@ -509,10 +545,10 @@
             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </div>
           <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">EMAIL</p>
-          <p class="text-lg font-bold text-gray-900 mb-1">wp@webtek.my</p>
+          <p class="text-lg font-bold text-gray-900 mb-1"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c9beb989beacabbdaca2e7a4b0">[email&#160;protected]</a></p>
           <p class="text-sm text-gray-400 mb-5">Send me a message directly</p>
           <!-- Fixed: descriptive CTA label -->
-          <a href="mailto:wp@webtek.my" class="text-sm text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center gap-1">
+          <a href="/cdn-cgi/l/email-protection#2d5a5d6d5a484f594846034054" class="text-sm text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center gap-1">
             Send email <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
         </div>
@@ -569,7 +605,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ─── Mobile menu ───────────────────────────────────────────
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -606,9 +642,3 @@
 
       if (pastHero) {
         // Over light sections: white nav with dark text
-        navbar.classList.add('light-nav');
-        hamburgerIcon.setAttribute('stroke', '#1e293b');
-      } else if (scrolled) {
-        // Still in/near hero: dark nav
-        navbar.classList.add('scrolled');
-        hamburgerIcon.setAttribute('stroke', 'w
