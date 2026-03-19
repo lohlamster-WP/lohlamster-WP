@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-MY">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,13 +68,16 @@
   }
   </script>
 
-  <!-- Performance: Tailwind via CDN (replace with compiled build for production) -->
+  <!-- Performance: Tailwind CSS via CDN — NOTE: Replace with compiled build for best performance -->
+  <!-- To compile: npx tailwindcss -o style.css --minify, then replace this script with <link rel="stylesheet" href="style.css"> -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Performance: Font preconnects (both domains) -->
+  <!-- Performance: Font preload + preconnects -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
 
   <style>
     * { font-family: 'Inter', sans-serif; }
@@ -215,6 +218,8 @@
             <img src="https://cdn.hercules.app/file_oCiDBocDjrH8ZOMG9V61pGhc"
                  alt="Wayne Poon, Founder and CEO of Webtek Sdn Bhd"
                  width="128" height="128"
+                 fetchpriority="high"
+                 loading="eager"
                  class="w-full h-full object-cover object-top">
           </div>
         </div>
@@ -272,6 +277,7 @@
                    alt="Wayne Poon, Founder and CEO of Webtek Sdn Bhd"
                    width="64" height="64"
                    loading="lazy"
+                   class="w-full h-full object-cover object-top">
                    class="w-full h-full object-cover object-top">
             </div>
             <div>
@@ -415,7 +421,7 @@
           <div class="relative flex gap-6">
             <div class="w-8 h-8 rounded-full border-4 border-blue-600 bg-blue-600 flex-shrink-0 mt-1 z-10" style="box-shadow: 0 0 0 4px rgba(37,99,235,0.2);" aria-hidden="true"></div>
             <div class="flex-1 p-6 rounded-2xl border border-gray-200 bg-white">
-              <span class="text-xs font-bold uppercase tracking-widest text-blue-600 mb-2 block">PRESENT</span>
+              <span class="text-xs font-bold uppercase tracking-widest text-blue-600 mb-2 block">2020 — PRESENT</span>
               <h3 class="text-lg font-bold text-gray-900">Founder &amp; CEO</h3>
               <p class="text-sm font-semibold text-gray-400 mb-3">Webtek Sdn Bhd</p>
               <p class="text-sm text-gray-500 leading-relaxed">Leads product development, company strategy, and technology solutions for SMEs and startups. Responsible for architecture decisions, team leadership, and ensuring client success across all digital transformation projects.</p>
@@ -424,7 +430,7 @@
           <div class="relative flex gap-6">
             <div class="w-8 h-8 rounded-full border-4 border-gray-300 bg-gray-100 flex-shrink-0 mt-1 z-10" aria-hidden="true"></div>
             <div class="flex-1 p-6 rounded-2xl border border-gray-200 bg-white">
-              <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 block">PREVIOUS</span>
+              <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 block">2016 — 2020</span>
               <h3 class="text-lg font-bold text-gray-900">CEO</h3>
               <p class="text-sm font-semibold text-gray-400 mb-3">Netsoft Media Sdn Bhd</p>
               <p class="text-sm text-gray-500 leading-relaxed">Led the company as Chief Executive Officer, overseeing business operations, strategic direction, and team management. Drove the company's growth in digital media and technology services, building a strong foundation of client relationships and operational excellence.</p>
@@ -514,8 +520,6 @@
     <div class="absolute top-1/4 -left-32 w-96 h-96 rounded-full pointer-events-none glow-orb" style="--glow-color:rgba(29,78,216,0.25);" aria-hidden="true"></div>
     <div class="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full pointer-events-none glow-orb" style="--glow-color:rgba(8,145,178,0.2);" aria-hidden="true"></div>
     <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-      <!-- Fixed: removed duplicate opening quote from blockquote text -->
-      <div class="text-6xl text-cyan-500/30 font-serif mb-8 leading-none" aria-hidden="true">"</div>
       <blockquote class="text-3xl md:text-4xl font-bold text-white leading-snug mb-8">
         To leverage technology to create a <span style="background:linear-gradient(to right,#38bdf8,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">better world</span>, where communities thrive, businesses prosper, and the environment is protected.
       </blockquote>
@@ -587,7 +591,7 @@
           <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5" style="background:linear-gradient(to bottom right,#f59e0b,#f97316);">
             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
           </div>
-          <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">ASSISTANT</p>
+          <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">THE ASSISTANT</p>
           <p class="text-lg font-bold text-gray-900 mb-1">+60 16-261 8261</p>
           <p class="text-sm text-gray-400 mb-5">Alternatively, reach my assistant</p>
           <a href="https://wa.me/60162618261" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp assistant (opens in new tab)" class="text-sm text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center gap-1">
