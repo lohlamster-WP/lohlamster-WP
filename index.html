@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wayne Poon — Founder & CEO · Webtek Sdn Bhd</title>
+
+  <!-- SEO: Meta description -->
+  <meta name="description" content="Wayne Poon is the Founder & CEO of Webtek Sdn Bhd — delivering mobile apps, AI automation, and digital solutions for SMEs and startups in Malaysia.">
+  <meta name="author" content="Wayne Poon">
+  <meta name="robots" content="index, follow">
+
+  <!-- SEO: Canonical -->
+  <link rel="canonical" href="https://waynepoon.onhercules.app/">
+
+  <!-- SEO: Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://waynepoon.onhercules.app/">
+  <meta property="og:title" content="Wayne Poon — Founder & CEO · Webtek Sdn Bhd">
+  <meta property="og:description" content="Wayne Poon is the Founder & CEO of Webtek Sdn Bhd — delivering mobile apps, AI automation, and digital solutions for SMEs and startups in Malaysia.">
+  <meta property="og:image" content="https://cdn.hercules.app/file_oCiDBocDjrH8ZOMG9V61pGhc">
+  <meta property="og:image:width" content="400">
+  <meta property="og:image:height" content="400">
+  <meta property="og:locale" content="en_MY">
+
+  <!-- SEO: Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wayne Poon — Founder & CEO · Webtek Sdn Bhd">
+  <meta name="twitter:description" content="Wayne Poon is the Founder & CEO of Webtek Sdn Bhd — delivering mobile apps, AI automation, and digital solutions for SMEs and startups in Malaysia.">
+  <meta name="twitter:image" content="https://cdn.hercules.app/file_oCiDBocDjrH8ZOMG9V61pGhc">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://cdn.hercules.app/file_oCiDBocDjrH8ZOMG9V61pGhc">
+
+  <!-- Performance: Tailwind via CDN (replace with compiled build for production) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Performance: Font preconnects (both domains) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+    .bg-slate-950 { background-color: #020617; }
+    .text-cyan-400 { color: #22d3ee; }
+    .animate-bounce-slow { animation: bounce 2s infinite; }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+    /* Nav: transparent on dark hero, solid on light sections */
+    nav.scrolled { background: rgba(2,6,23,0.97) !important; backdrop-filter: blur(12px); box-shadow: 0 1px 20px rgba(0,0,0,0.3); }
+
+    /* Nav: dark text when over light sections */
+    nav.light-nav { background: rgba(255,255,255,0.97) !important; backdrop-filter: blur(12px); box-shadow: 0 1px 12px rgba(0,0,0,0.08); }
+    nav.light-nav #nav-logo,
+    nav.light-nav .nav-link { color: #1e293b !important; }
+    nav.light-nav .nav-link:hover { color: #2563eb !important; }
+
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute; left: -9999px; top: 6px; z-index: 9999;
+      background: #2563eb; color: #fff; padding: 8px 16px; border-radius: 4px;
+      font-size: 14px; font-weight: 600; text-decoration: none;
+    }
+    .skip-link:focus { left: 6px; }
+
+    /* Mobile menu */
+    #mobile-menu {
+      display: none;
+      position: fixed; inset: 0; z-index: 40;
+      background: rgba(2,6,23,0.98);
+      backdrop-filter: blur(16px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    #mobile-menu a:hover { color: #38bdf8; }
+    #hamburger { display: none; }
+    @media (max-width: 767px) {
+      #hamburger { display: flex; }
+      #nav-links { display: none !important; }
+    }
+
+    /* Glow orbs: use radial-gradient instead of filter:blur for better perf */
+    .glow-orb {
+      background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- Accessibility: Skip to content -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <button id="mobile-close" aria-label="Close menu" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;cursor:pointer;">
+      <svg width="28" height="28" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <a href="#home" onclick="closeMobileMenu()">Home</a>
+    <a href="#about" onclick="closeMobileMenu()">About</a>
+    <a href="#expertise" onclick="closeMobileMenu()">Expertise</a>
+    <a href="#timeline" onclick="closeMobileMenu()">Timeline</a>
+    <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  </div>
+
+  <!-- Nav -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent" role="navigation" aria-label="Main navigation">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#home" id="nav-logo" class="font-bold text-lg text-white" aria-label="Wayne Poon — home">Wayne Poon</a>
+
+      <!-- Desktop links -->
+      <div id="nav-links" class="hidden md:flex items-center gap-8 text-sm text-white/80">
+        <a href="#about" class="nav-link hover:text-white transition-colors">About</a>
+        <a href="#expertise" class="nav-link hover:text-white transition-colors">Expertise</a>
+        <a href="#timeline" class="nav-link hover:text-white transition-colors">Timeline</a>
+        <a href="#projects" class="nav-link hover:text-white transition-colors">Projects</a>
+        <a href="#contact" class="nav-link hover:text-white transition-colors">Contact</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors">Contact Me</a>
+        <!-- Hamburger (mobile only) -->
+        <button id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu"
+          style="background:none;border:none;cursor:pointer;padding:4px;">
+          <svg width="24" height="24" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
+    <!-- Grid background -->
+    <div class="absolute inset-0 opacity-40" style="background-image: linear-gradient(to right, rgba(99,179,237,0.05) 1px, transparent 1px), linear-gradient(rgba(99,179,237,0.05) 1px, transparent 1px); background-size: 72px 72px;" aria-hidden="true"></div>
+    <!-- Glow orbs (perf: radial-gradient, no filter:blur) -->
+    <div class="absolute top-1/4 -left-32 w-96 h-96 rounded-full pointer-events-none glow-orb" style="--glow-color:rgba(29,78,216,0.25);" aria-hidden="true"></div>
+    <div class="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full pointer-events-none glow-orb" style="--glow-color:rgba(8,145,178,0.2);" aria-hidden="true"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none glow-orb" style="--glow-color:rgba(30,58,138,0.2);" aria-hidden="true"></div>
+
+    <div id="main-content" class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <!-- Avatar -->
+      <div class="mb-8 flex justify-center">
+        <div class="relative">
+          <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white/20" style="box-shadow: 0 25px 60px rgba(59,130,246,0.4);">
+            <img src="https://cdn.hercules.app/file_oCiDBocDjrH8ZOMG9V61pGhc"
+                 alt="Wayne Poon, Founder and CEO of Webtek Sdn Bhd"
+                 width="128" height="128"
+                 class="w-full h-full object-cover object-top">
+          </div>
+        </div>
+      </div>
+
+      <!-- Location badge -->
+      <div class="mb-6 flex justify-center">
+        <span class="inline-flex items-center gap-2 text-sm text-blue-300/80 bg-blue-900/30 border border-blue-700/30 px-4 py-1.5 rounded-full">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Malaysia
+        </span>
+      </div>
+
+      <!-- Name -->
+      <h1 class="text-7xl md:text-8xl font-black mb-4 leading-none tracking-tight">
+        <span class="text-white">Wayne </span><span style="background: linear-gradient(to right, #38bdf8, #22d3ee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Poon</span>
+      </h1>
+
+      <!-- Title -->
+      <p class="text-lg font-semibold mb-6" style="background: linear-gradient(to right, #60a5fa, #22d3ee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        Founder &amp; CEO · Webtek Sdn Bhd
+      </p>
+
+      <!-- Bio -->
+      <p class="text-slate-200 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+        Shaping businesses with digitalization — building mobile apps, software, AI automation, and digital platform solutions that help businesses transform, grow, and compete in the digital economy.
+      </p>
+
+      <!-- Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3 rounded-full transition-colors text-sm">Contact Me</a>
+        <a href="https://webtek.my" target="_blank" rel="noopener noreferrer" aria-label="Explore Webtek (opens in new tab)" class="text-white border border-white/30 hover:border-white/60 font-semibold px-7 py-3 rounded-full transition-colors text-sm inline-flex items-center gap-2">
+          Explore Webtek
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator (correctly positioned inside section, not content div) -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500" aria-hidden="true">
+      <span class="text-xs tracking-widest uppercase font-medium">SCROLL</span>
+      <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-24" style="background-color: #f8fafc;">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-start">
+        <!-- Left: Profile Card -->
+        <div class="space-y-6">
+          <div class="flex items-center gap-5 p-5 rounded-2xl border" style="background: linear-gradient(to bottom right, rgba(37,99,235,0.1), rgba(6,182,212,0.1)); border-color: rgba(37,99,235,0.2);">
+            <div class="w-16 h-16 rounded-xl overflow-hidden border-2 flex-shrink-0" style="border-color: rgba(37,99,235,0.2);">
+              <img src="https://cdn.hercules.app/file_oCiDBocDjrH8ZOMG9V61pGhc"
+                   alt=""
+                   width="64" height="64"
+                   loading="lazy"
+                   class="w-full h-full object-cover object-top">
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-gray-900">Wayne Poon</h3>
+              <p class="text-sm text-gray-500">Founder &amp; CEO</p>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-gray-200">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(37,99,235,0.1);">
+                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400">Company</p>
+                <p class="font-semibold text-gray-900 text-sm">Webtek Sdn Bhd</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-gray-200">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(37,99,235,0.1);">
+                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400">Focus</p>
+                <p class="font-semibold text-gray-900 text-sm">SMEs &amp; Startups</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-gray-200">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(37,99,235,0.1);">
+                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400">Specialty</p>
+                <p class="font-semibold text-gray-900 text-sm">Tech &amp; Automation</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Story card -->
+          <div class="p-5 rounded-2xl border border-gray-200 bg-white">
+            <h4 class="font-bold text-gray-900 mb-3">How Webtek Started</h4>
+            <p class="text-sm text-gray-500 leading-relaxed">Wayne founded Webtek Sdn Bhd after observing that many SMEs struggled with manual processes and inefficient workflows. He set out to create digital solutions that reduce repetitive tasks, optimize operations, and let business owners focus on what matters — growth.</p>
+          </div>
+        </div>
+
+        <!-- Right: About content -->
+        <div class="space-y-6">
+          <div>
+            <span class="text-sm font-bold text-blue-600 uppercase tracking-widest">ABOUT ME</span>
+            <h2 class="text-4xl font-extrabold text-gray-900 mt-2 leading-tight">Turning Technology into Business Impact</h2>
+          </div>
+          <div class="space-y-4 text-gray-500 leading-relaxed">
+            <!-- Fixed: added space before em-dash -->
+            <p>Wayne Poon is a Malaysian technology entrepreneur and the Founder &amp; CEO of <span class="text-gray-900 font-semibold">Webtek Sdn Bhd</span> — a technology company specialising in mobile applications, software development, AI automation, and digital platform solutions.</p>
+            <p>Webtek helps businesses transform digitally by building scalable, intelligent, and user-friendly systems that improve efficiency, reduce operational costs, and create better customer experiences.</p>
+            <p>Wayne leads the company with a belief that technology should be accessible, efficient, and cost-effective — empowering businesses and entrepreneurs to compete confidently in an increasingly digital marketplace.</p>
+          </div>
+          <!-- Short bio card -->
+          <div class="p-6 rounded-2xl border" style="background: linear-gradient(to bottom right, #eff6ff, #ecfeff); border-color: #bfdbfe;">
+            <p class="text-sm font-semibold text-blue-700 mb-3 uppercase tracking-widest">Short Bio</p>
+            <p class="text-gray-700 text-sm leading-relaxed">Wayne Poon is the Founder &amp; CEO of Webtek Sdn Bhd, providing software development, automation, and digital solutions for SMEs and startups. Passionate about technology, AI, and digital transformation, he helps businesses operate efficiently and scale sustainably.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise Section -->
+  <section id="expertise" class="py-24" style="background-color: #f1f5f9;">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-sm font-bold text-blue-600 uppercase tracking-widest">What I Do</span>
+        <h2 class="text-4xl font-extrabold text-gray-900 mt-2">Expertise &amp; Services</h2>
+        <p class="text-gray-500 mt-4 max-w-xl mx-auto">From mobile apps to AI automation — delivering innovative, affordable, and scalable technology solutions through Webtek Sdn Bhd.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="p-6 rounded-2xl bg-white border border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(37,99,235,0.1)">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Custom Software Development</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Enterprise software, web applications, and cloud platforms built with PHP, Laravel, Python, C++, and Node.js — tailored precisely to your business needs.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(37,99,235,0.1)">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Mobile App Development</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">High-performance iOS and Android apps built with React Native and Flutter. From e-commerce to on-demand service apps and marketplace platforms.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(37,99,235,0.1)">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">AI Automation &amp; Smart Systems</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Intelligent systems including WhatsApp AI automation, AI chatbots, AI booking systems, and customer service automation that work 24/7.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(37,99,235,0.1)">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Digital Platform Solutions</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Scalable digital platforms and web applications that streamline operations, improve customer experience, and support business growth.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(37,99,235,0.1)">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">API Integration</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Seamlessly connect your tools, systems, and third-party services through robust API integrations that unify your digital ecosystem.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(37,99,235,0.1)">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">E-commerce &amp; Marketplace</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">End-to-end e-commerce and marketplace platforms — including commission-free models — that reduce costs and connect merchants with customers.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 sm:col-span-2 lg:col-span-1">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(37,99,235,0.1)">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">WhatsApp AI Customer Service</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Automated WhatsApp AI that handles customer inquiries, bookings, and support around the clock without increasing staffing costs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section id="timeline" class="py-24" style="background-color: #f8fafc;">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-sm font-bold text-blue-600 uppercase tracking-widest">EXPERIENCE</span>
+        <h2 class="text-4xl font-extrabold text-gray-900 mt-2">Career Journey</h2>
+        <p class="text-gray-500 mt-4 max-w-md mx-auto">Building expertise through years of hands-on technology leadership and innovation.</p>
+      </div>
+      <div class="relative max-w-2xl mx-auto">
+        <div class="absolute left-0 top-0 bottom-0 w-px bg-gray-200 ml-4" aria-hidden="true"></div>
+        <div class="space-y-8">
+          <div class="relative flex gap-6">
+            <div class="w-8 h-8 rounded-full border-4 border-blue-600 bg-blue-600 flex-shrink-0 mt-1 z-10" style="box-shadow: 0 0 0 4px rgba(37,99,235,0.2);" aria-hidden="true"></div>
+            <div class="flex-1 p-6 rounded-2xl border border-gray-200 bg-white">
+              <span class="text-xs font-bold uppercase tracking-widest text-blue-600 mb-2 block">PRESENT</span>
+              <h3 class="text-lg font-bold text-gray-900">Founder &amp; CEO</h3>
+              <p class="text-sm font-semibold text-gray-400 mb-3">Webtek Sdn Bhd</p>
+              <p class="text-sm text-gray-500 leading-relaxed">Leads product development, company strategy, and technology solutions for SMEs and startups. Responsible for architecture decisions, team leadership, and ensuring client success across all digital transformation projects.</p>
+            </div>
+          </div>
+          <div class="relative flex gap-6">
+            <div class="w-8 h-8 rounded-full border-4 border-gray-300 bg-gray-100 flex-shrink-0 mt-1 z-10" aria-hidden="true"></div>
+            <div class="flex-1 p-6 rounded-2xl border border-gray-200 bg-white">
+              <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 block">PREVIOUS</span>
+              <h3 class="text-lg font-bold text-gray-900">CEO</h3>
+              <p class="text-sm font-semibold text-gray-400 mb-3">Netsoft Media Sdn Bhd</p>
+              <p class="text-sm text-gray-500 leading-relaxed">Led the company as Chief Executive Officer, overseeing business operations, strategic direction, and team management. Drove the company's growth in digital media and technology services, building a strong foundation of client relationships and operational excellence.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-24" style="background-color: #f1f5f9;">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-sm font-bold text-blue-600 uppercase tracking-widest">PORTFOLIO</span>
+        <h2 class="text-4xl font-extrabold text-gray-900 mt-2">Selected Projects</h2>
+        <p class="text-gray-500 mt-4 max-w-xl mx-auto">Real products and platforms built by Webtek Sdn Bhd — solving genuine business challenges across industries.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Lapar App -->
+        <div class="rounded-2xl bg-white border border-gray-200 overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="p-8 flex items-center justify-between" style="background: linear-gradient(to bottom right, #f97316, #ef4444);">
+            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 11H4L5 9z"/></svg>
+            <span class="text-xs font-semibold text-white/80 px-3 py-1 rounded-full" style="background:rgba(255,255,255,0.15);">Food Ordering Platform</span>
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="text-lg font-bold text-gray-900 mb-3">Lapar App</h3>
+            <p class="text-sm text-gray-500 leading-relaxed mb-4">A commission-free food ordering platform helping restaurants and food vendors sell online without high fees. Lapar App connects merchants directly with customers, lowering costs and creating fairer margins for all.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Marketplace</span>
+              <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Food Tech</span>
+              <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Mobile App</span>
+            </div>
+            <!-- Fixed: specific link to Lapar app -->
+            <a href="https://lapar.my" target="_blank" rel="noopener noreferrer" aria-label="View Lapar App (opens in new tab)" class="text-sm text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center gap-1 mt-auto">
+              View Lapar App <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- AIRS Hotel -->
+        <div class="rounded-2xl bg-white border border-gray-200 overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="p-8 flex items-center justify-between" style="background: linear-gradient(to bottom right, #2563eb, #06b6d4);">
+            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span class="text-xs font-semibold text-white/80 px-3 py-1 rounded-full" style="background:rgba(255,255,255,0.15);">AI + Hospitality</span>
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="text-lg font-bold text-gray-900 mb-3">AIRS Hotel Booking System</h3>
+            <p class="text-sm text-gray-500 leading-relaxed mb-4">Smart hotel booking system integrated with WhatsApp AI customer service. Automates room bookings, real-time availability, booking confirmations, and 24/7 AI-powered customer inquiries — reducing manual workload.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">AI Automation</span>
+              <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">WhatsApp AI</span>
+              <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Hospitality</span>
+            </div>
+            <a href="https://webtek.my" target="_blank" rel="noopener noreferrer" aria-label="Learn more about AIRS on Webtek (opens in new tab)" class="text-sm text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center gap-1 mt-auto">
+              Learn more <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Custom Software -->
+        <div class="rounded-2xl bg-white border border-gray-200 overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="p-8 flex items-center justify-between" style="background: linear-gradient(to bottom right, #4f46e5, #3b82f6);">
+            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            <span class="text-xs font-semibold text-white/80 px-3 py-1 rounded-full" style="background:rgba(255,255,255,0.15);">Software Development</span>
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="text-lg font-bold text-gray-900 mb-3">Custom Software &amp; App Development</h3>
+            <p class="text-sm text-gray-500 leading-relaxed mb-4">End-to-end custom software development covering web apps, mobile apps (iOS &amp; Android via React Native &amp; Flutter), enterprise systems, cloud platforms, and API integrations tailored to each client's needs.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Laravel</span>
+              <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">React Native</span>
+              <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Flutter</span>
+              <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Python</span>
+            </div>
+            <a href="https://webtek.my" target="_blank" rel="noopener noreferrer" aria-label="View Webtek's services (opens in new tab)" class="text-sm text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center gap-1 mt-auto">
+              View services <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision Section -->
+  <section id="vision" class="py-28 bg-slate-950 relative overflow-hidden">
+    <div class="absolute top-1/4 -left-32 w-96 h-96 rounded-full pointer-events-none glow-orb" style="--glow-color:rgba(29,78,216,0.25);" aria-hidden="true"></div>
+    <div class="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full pointer-events-none glow-orb" style="--glow-color:rgba(8,145,178,0.2);" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <!-- Fixed: removed duplicate opening quote from blockquote text -->
+      <div class="text-6xl text-cyan-500/30 font-serif mb-8 leading-none" aria-hidden="true">"</div>
+      <blockquote class="text-3xl md:text-4xl font-bold text-white leading-snug mb-8">
+        To leverage technology to create a <span style="background:linear-gradient(to right,#38bdf8,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">better world</span>, where communities thrive, businesses prosper, and the environment is protected.
+      </blockquote>
+      <p class="text-slate-400 text-sm font-medium">— Wayne Poon, Founder Mission Statement</p>
+    </div>
+    <div class="max-w-4xl mx-auto px-6 mt-16 grid md:grid-cols-2 gap-6">
+      <div class="p-8 rounded-2xl border" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(6,182,212,0.15);">
+          <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-cyan-400 mb-3">Vision</h3>
+        <p class="text-slate-300 text-sm leading-relaxed">To leverage technology to create a better world, where communities thrive, businesses prosper, and the environment is protected.</p>
+      </div>
+      <div class="p-8 rounded-2xl border" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(6,182,212,0.15);">
+          <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-cyan-400 mb-3">Mission</h3>
+        <p class="text-slate-300 text-sm leading-relaxed">To provide innovative technology solutions that empower individuals, businesses, and communities to achieve their full potential. We are committed to delivering sustainable, socially responsible solutions that have a positive impact on the world.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24" style="background-color:#f8fafc;">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-sm font-bold text-blue-600 uppercase tracking-widest">LET'S CONNECT</span>
+        <h2 class="text-4xl font-extrabold text-gray-900 mt-2">Get in Touch</h2>
+        <p class="text-gray-500 mt-4 max-w-xl mx-auto">Whether you're looking to transform your business with technology or explore a partnership, I'd love to hear from you.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="p-8 rounded-2xl bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5" style="background:linear-gradient(to bottom right,#22c55e,#16a34a);">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </div>
+          <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">PHONE / WHATSAPP</p>
+          <p class="text-lg font-bold text-gray-900 mb-1">+60 12-323 0689</p>
+          <p class="text-sm text-gray-400 mb-5">Call or WhatsApp me anytime</p>
+          <!-- Fixed: descriptive CTA label -->
+          <a href="https://wa.me/60123230689" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Wayne (opens in new tab)" class="text-sm text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center gap-1">
+            WhatsApp me <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="p-8 rounded-2xl bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5" style="background:linear-gradient(to bottom right,#3b82f6,#6366f1);">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">EMAIL</p>
+          <p class="text-lg font-bold text-gray-900 mb-1"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c4b3b484b3a1a6b0a1afeaa9bd">[email&#160;protected]</a></p>
+          <p class="text-sm text-gray-400 mb-5">Send me a message directly</p>
+          <!-- Fixed: descriptive CTA label -->
+          <a href="/cdn-cgi/l/email-protection#f58285b582909781909edb988c" class="text-sm text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center gap-1">
+            Send email <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="p-8 rounded-2xl bg-white border border-gray-200 hover:shadow-lg transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5" style="background:linear-gradient(to bottom right,#a78bfa,#818cf8);">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+          </div>
+          <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">WEBSITE</p>
+          <p class="text-lg font-bold text-gray-900 mb-1">webtek.my</p>
+          <p class="text-sm text-gray-400 mb-5">Explore Webtek's solutions</p>
+          <!-- Fixed: descriptive CTA label -->
+          <a href="https://webtek.my" target="_blank" rel="noopener noreferrer" aria-label="Visit webtek.my (opens in new tab)" class="text-sm text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center gap-1">
+            Visit website <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-slate-950 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-10">
+        <div>
+          <p class="font-bold text-white text-lg">Wayne Poon</p>
+          <p class="text-slate-400 text-sm mt-1">Founder &amp; CEO · Webtek Sdn Bhd</p>
+        </div>
+        <!-- Fixed: footer nav now includes Timeline -->
+        <nav class="flex flex-wrap gap-6 text-sm text-slate-400" aria-label="Footer navigation">
+          <a href="#home" class="hover:text-white transition-colors">Home</a>
+          <a href="#about" class="hover:text-white transition-colors">About</a>
+          <a href="#expertise" class="hover:text-white transition-colors">Expertise</a>
+          <a href="#timeline" class="hover:text-white transition-colors">Timeline</a>
+          <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+          <a href="https://webtek.my" target="_blank" rel="noopener noreferrer" aria-label="Visit webtek.my (opens in new tab)" class="hover:text-white transition-colors inline-flex items-center gap-1">
+            Webtek.my <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </nav>
+      </div>
+      <div class="border-t border-white/10 pt-8 text-center text-slate-500 text-sm">
+        &copy; 2026 Wayne Poon. Empowering SMEs with practical technology solutions.
+      </div>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // ─── Mobile menu ───────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileClose = document.getElementById('mobile-close');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    hamburger.addEventListener('click', openMobileMenu);
+    mobileClose.addEventListener('click', closeMobileMenu);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMobileMenu();
+    });
+
+    // ─── Nav scroll behaviour: smart colour switching ──────────
+    const navbar = document.getElementById('navbar');
+    const navLogo = document.getElementById('nav-logo');
+    const hamburgerIcon = hamburger.querySelector('svg');
+    const heroSection = document.getElementById('home');
+
+    function updateNav() {
+      const heroBottom = heroSection.getBoundingClientRect().bottom;
+      const scrolled = window.scrollY > 50;
+      const pastHero = heroBottom < 80; // scrolled past the dark hero
+
+      navbar.classList.remove('scrolled', 'light-nav');
+
+      if (pastHero) {
+        // Over light sections: white nav with dark text
+        navbar.classList.add('light-nav');
+        hamburgerIcon.setAttribute('stroke', '#1e293b');
+      } else if (scrolled) {
+        // Still in/near hero: dark nav
+        navbar.classList.add('scrolled');
+        hamburgerIcon.setAttribute('stroke', 'w
