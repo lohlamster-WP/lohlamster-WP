@@ -1,0 +1,135 @@
+{
+  "hero": {
+    "name": "Wayne Poon",
+    "title": "Founder & CEO · Webtek Sdn Bhd",
+    "bio": "Shaping businesses with digitalization — building mobile apps, software, AI automation, and digital platform solutions that help businesses transform, grow, and compete in the digital economy.",
+    "ctaLabel": "Contact Me",
+    "ctaSecondaryLabel": "Explore Webtek",
+    "ctaSecondaryUrl": "https://webtek.my",
+    "location": "Malaysia",
+    "avatarUrl": "https://cdn.hercules.app/file_oCiDBocDjrH8ZOMG9V61pGhc"
+  },
+  "about": {
+    "heading": "Turning Technology into Business Impact",
+    "paragraphs": [
+      "Wayne Poon is a Malaysian technology entrepreneur and the Founder & CEO of <strong>Webtek Sdn Bhd</strong> — a technology company specialising in mobile applications, software development, AI automation, and digital platform solutions.",
+      "Webtek helps businesses transform digitally by building scalable, intelligent, and user-friendly systems that improve efficiency, reduce operational costs, and create better customer experiences.",
+      "Wayne leads the company with a belief that technology should be accessible, efficient, and cost-effective — empowering businesses and entrepreneurs to compete confidently in an increasingly digital marketplace."
+    ],
+    "shortBio": "Wayne Poon is the Founder & CEO of Webtek Sdn Bhd, providing software development, automation, and digital solutions for SMEs and startups. Passionate about technology, AI, and digital transformation, he helps businesses operate efficiently and scale sustainably.",
+    "storyTitle": "How Webtek Started",
+    "storyText": "Wayne founded Webtek Sdn Bhd after observing that many SMEs struggled with manual processes and inefficient workflows. He set out to create digital solutions that reduce repetitive tasks, optimize operations, and let business owners focus on what matters — growth.",
+    "company": "Webtek Sdn Bhd",
+    "focus": "SMEs & Startups",
+    "specialty": "Tech & Automation"
+  },
+  "expertise": [
+    {
+      "title": "Custom Software Development",
+      "description": "Enterprise software, web applications, and cloud platforms built with PHP, Laravel, Python, C++, and Node.js — tailored precisely to your business needs.",
+      "icon": "code"
+    },
+    {
+      "title": "Mobile App Development",
+      "description": "High-performance iOS and Android apps built with React Native and Flutter. From e-commerce to on-demand service apps and marketplace platforms.",
+      "icon": "mobile"
+    },
+    {
+      "title": "AI Automation & Smart Systems",
+      "description": "Intelligent systems including WhatsApp AI automation, AI chatbots, AI booking systems, and customer service automation that work 24/7.",
+      "icon": "ai"
+    },
+    {
+      "title": "Digital Platform Solutions",
+      "description": "Scalable digital platforms and web applications that streamline operations, improve customer experience, and support business growth.",
+      "icon": "globe"
+    },
+    {
+      "title": "API Integration",
+      "description": "Seamlessly connect your tools, systems, and third-party services through robust API integrations that unify your digital ecosystem.",
+      "icon": "api"
+    },
+    {
+      "title": "E-commerce & Marketplace",
+      "description": "End-to-end e-commerce and marketplace platforms — including commission-free models — that reduce costs and connect merchants with customers.",
+      "icon": "cart"
+    },
+    {
+      "title": "WhatsApp AI Customer Service",
+      "description": "Automated WhatsApp AI that handles customer inquiries, bookings, and support around the clock without increasing staffing costs.",
+      "icon": "chat"
+    }
+  ],
+  "timeline": [
+    {
+      "period": "2020 — PRESENT",
+      "role": "Founder & CEO",
+      "company": "Webtek Sdn Bhd",
+      "description": "Leads product development, company strategy, and technology solutions for SMEs and startups. Responsible for architecture decisions, team leadership, and ensuring client success across all digital transformation projects.",
+      "current": true
+    },
+    {
+      "period": "2016 — 2020",
+      "role": "CEO",
+      "company": "Netsoft Media Sdn Bhd",
+      "description": "Led the company as Chief Executive Officer, overseeing business operations, strategic direction, and team management. Drove the company's growth in digital media and technology services, building a strong foundation of client relationships and operational excellence.",
+      "current": false
+    }
+  ],
+  "projects": [
+    {
+      "title": "Lapar App",
+      "category": "Food Ordering Platform",
+      "description": "A commission-free food ordering platform helping restaurants and food vendors sell online without high fees. Lapar App connects merchants directly with customers, lowering costs and creating fairer margins for all.",
+      "tags": ["Marketplace", "Food Tech", "Mobile App"],
+      "linkLabel": "View Lapar App",
+      "linkUrl": "https://lapar.com.my",
+      "gradient": "from-orange-500-to-red-500"
+    },
+    {
+      "title": "AIRS Hotel Booking System",
+      "category": "AI + Hospitality",
+      "description": "Smart hotel booking system integrated with WhatsApp AI customer service. Automates room bookings, real-time availability, booking confirmations, and 24/7 AI-powered customer inquiries — reducing manual workload.",
+      "tags": ["AI Automation", "WhatsApp AI", "Hospitality"],
+      "linkLabel": "Learn more",
+      "linkUrl": "https://webtek.my",
+      "gradient": "from-blue-600-to-cyan-500"
+    },
+    {
+      "title": "Custom Software & App Development",
+      "category": "Software Development",
+      "description": "End-to-end custom software development covering web apps, mobile apps (iOS & Android via React Native & Flutter), enterprise systems, cloud platforms, and API integrations tailored to each client's needs.",
+      "tags": ["Laravel", "React Native", "Flutter", "Python"],
+      "linkLabel": "View services",
+      "linkUrl": "https://webtek.my",
+      "gradient": "from-indigo-600-to-blue-500"
+    }
+  ],
+  "vision": {
+    "quote": "To leverage technology to create a better world, where communities thrive, businesses prosper, and the environment is protected.",
+    "attribution": "Wayne Poon, Founder Mission Statement",
+    "visionText": "To leverage technology to create a better world, where communities thrive, businesses prosper, and the environment is protected.",
+    "missionText": "To provide innovative technology solutions that empower individuals, businesses, and communities to achieve their full potential. We are committed to delivering sustainable, socially responsible solutions that have a positive impact on the world."
+  },
+  "contact": {
+    "phone": "+60 12-323 0689",
+    "phoneWa": "https://wa.me/60123230689",
+    "phoneDescription": "Call or WhatsApp me anytime",
+    "email": "wp@webtek.my",
+    "emailDescription": "Send me a message directly",
+    "website": "webtek.my",
+    "websiteUrl": "https://webtek.my",
+    "websiteDescription": "Explore Webtek's solutions",
+    "assistantPhone": "+60 16-261 8261",
+    "assistantWa": "https://wa.me/60162618261",
+    "assistantDescription": "Alternatively, reach my assistant"
+  },
+  "footer": {
+    "copyright": "© 2026 Wayne Poon. Empowering SMEs with practical technology solutions.",
+    "visitorOffset": 891
+  },
+  "meta": {
+    "title": "Wayne Poon — Founder & CEO · Webtek Sdn Bhd",
+    "description": "Wayne Poon is the Founder & CEO of Webtek Sdn Bhd — delivering mobile apps, AI automation, and digital solutions for SMEs and startups in Malaysia."
+  }
+}

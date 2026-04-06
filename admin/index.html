@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS · Wayne Poon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .section-view { display: none; }
+    .section-view.active { display: block; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 10px; cursor: pointer; color: rgba(255,255,255,0.55); font-size: 14px; font-weight: 500; transition: all 0.15s; }
+    .nav-item:hover { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.9); }
+    .nav-item.active { background: rgba(59,130,246,0.2); color: #60a5fa; }
+    .field-label { display: block; font-size: 13px; font-weight: 500; color: #94a3b8; margin-bottom: 6px; }
+    .field-input { width: 100%; background: #0f172a; border: 1px solid rgba(255,255,255,0.1); color: #f1f5f9; border-radius: 10px; padding: 10px 14px; font-size: 14px; transition: border-color 0.15s; outline: none; }
+    .field-input:focus { border-color: #3b82f6; }
+    .field-textarea { width: 100%; background: #0f172a; border: 1px solid rgba(255,255,255,0.1); color: #f1f5f9; border-radius: 10px; padding: 10px 14px; font-size: 14px; transition: border-color 0.15s; outline: none; resize: vertical; }
+    .field-textarea:focus { border-color: #3b82f6; }
+    .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px; margin-bottom: 12px; }
+    .btn-save { background: #2563eb; color: white; font-weight: 600; font-size: 14px; padding: 10px 24px; border-radius: 10px; border: none; cursor: pointer; transition: background 0.15s; }
+    .btn-save:hover { background: #1d4ed8; }
+    .btn-save:disabled { background: #1e3a5f; color: #60a5fa; cursor: not-allowed; }
+    .btn-danger { background: rgba(239,68,68,0.15); color: #f87171; font-size: 13px; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(239,68,68,0.2); cursor: pointer; transition: background 0.15s; }
+    .btn-danger:hover { background: rgba(239,68,68,0.25); }
+    .btn-add { background: rgba(59,130,246,0.15); color: #60a5fa; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.25); cursor: pointer; transition: background 0.15s; }
+    .btn-add:hover { background: rgba(59,130,246,0.25); }
+    #toast { position: fixed; bottom: 24px; right: 24px; z-index: 9999; padding: 12px 20px; border-radius: 12px; font-size: 14px; font-weight: 500; display: none; transition: opacity 0.2s; }
+    #toast.success { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); color: #4ade80; }
+    #toast.error { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: #f87171; }
+    ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+  </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="w-60 flex-shrink-0 border-r border-white/8 flex flex-col" style="border-color:rgba(255,255,255,0.08);">
+    <div class="p-5 border-b" style="border-color:rgba(255,255,255,0.08);">
+      <p class="font-bold text-white">Wayne Poon</p>
+      <p class="text-xs text-slate-500 mt-0.5">Site CMS</p>
+    </div>
+
+    <nav class="flex-1 p-3 space-y-0.5 overflow-y-auto">
+      <div class="nav-item active" onclick="showSection('hero')">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        Hero
+      </div>
+      <div class="nav-item" onclick="showSection('about')">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        About
+      </div>
+      <div class="nav-item" onclick="showSection('expertise')">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        Expertise
+      </div>
+      <div class="nav-item" onclick="showSection('timeline')">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Timeline
+      </div>
+      <div class="nav-item" onclick="showSection('projects')">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        Projects
+      </div>
+      <div class="nav-item" onclick="showSection('vision')">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+        Vision & Mission
+      </div>
+      <div class="nav-item" onclick="showSection('contact')">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        Contact
+      </div>
+      <div class="nav-item" onclick="showSection('settings')">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Settings
+      </div>
+    </nav>
+
+    <div class="p-3 border-t" style="border-color:rgba(255,255,255,0.08);">
+      <div class="nav-item" onclick="viewSite()">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        View Site
+      </div>
+      <div class="nav-item" onclick="logout()" style="color:#f87171;">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        Logout
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="flex-1 overflow-y-auto">
+    <div class="max-w-3xl mx-auto px-8 py-8">
+
+      <!-- ── HERO ─────────────────────────────────────────── -->
+      <div id="section-hero" class="section-view active">
+        <h2 class="text-xl font-bold mb-1">Hero Section</h2>
+        <p class="text-slate-400 text-sm mb-6">The main banner at the top of your site.</p>
+        <div class="space-y-4">
+          <div><label class="field-label">Avatar Image URL</label><input id="hero-avatarUrl" class="field-input" type="url"></div>
+          <div class="grid grid-cols-2 gap-4">
+            <div><label class="field-label">Name</label><input id="hero-name" class="field-input" type="text"></div>
+            <div><label class="field-label">Location Badge</label><input id="hero-location" class="field-input" type="text"></div>
+          </div>
+          <div><label class="field-label">Title / Subtitle</label><input id="hero-title" class="field-input" type="text"></div>
+          <div><label class="field-label">Bio</label><textarea id="hero-bio" class="field-textarea" rows="3"></textarea></div>
+          <div class="grid grid-cols-2 gap-4">
+            <div><label class="field-label">Primary Button Label</label><input id="hero-ctaLabel" class="field-input" type="text"></div>
+            <div><label class="field-label">Secondary Button Label</label><input id="hero-ctaSecondaryLabel" class="field-input" type="text"></div>
+          </div>
+          <div><label class="field-label">Secondary Button URL</label><input id="hero-ctaSecondaryUrl" class="field-input" type="url"></div>
+        </div>
+        <div class="mt-6"><button class="btn-save" onclick="saveSection('hero')">Save Hero</button></div>
+      </div>
+
+      <!-- ── ABOUT ────────────────────────────────────────── -->
+      <div id="section-about" class="section-view">
+        <h2 class="text-xl font-bold mb-1">About Section</h2>
+        <p class="text-slate-400 text-sm mb-6">Your personal introduction and company story.</p>
+        <div class="space-y-4">
+          <div><label class="field-label">Section Heading</label><input id="about-heading" class="field-input" type="text"></div>
+          <div><label class="field-label">Paragraph 1</label><textarea id="about-p1" class="field-textarea" rows="3"></textarea></div>
+          <div><label class="field-label">Paragraph 2</label><textarea id="about-p2" class="field-textarea" rows="3"></textarea></div>
+          <div><label class="field-label">Paragraph 3</label><textarea id="about-p3" class="field-textarea" rows="3"></textarea></div>
+          <div><label class="field-label">Short Bio</label><textarea id="about-shortBio" class="field-textarea" rows="3"></textarea></div>
+          <div><label class="field-label">Story Title</label><input id="about-storyTitle" class="field-input" type="text"></div>
+          <div><label class="field-label">Story Text</label><textarea id="about-storyText" class="field-textarea" rows="3"></textarea></div>
+          <div class="grid grid-cols-3 gap-4">
+            <div><label class="field-label">Company</label><input id="about-company" class="field-input" type="text"></div>
+            <div><label class="field-label">Focus</label><input id="about-focus" class="field-input" type="text"></div>
+            <div><label class="field-label">Specialty</label><input id="about-specialty" class="field-input" type="text"></div>
+          </div>
+        </div>
+        <div class="mt-6"><button class="btn-save" onclick="saveSection('about')">Save About</button></div>
+      </div>
+
+      <!-- ── EXPERTISE ─────────────────────────────────────── -->
+      <div id="section-expertise" class="section-view">
+        <div class="flex items-center justify-between mb-1">
+          <h2 class="text-xl font-bold">Expertise & Services</h2>
+          <button class="btn-add" onclick="addExpertise()">+ Add Service</button>
+        </div>
+        <p class="text-slate-400 text-sm mb-6">Your service cards. Each has a title and description.</p>
+        <div id="expertise-list"></div>
+        <div class="mt-6"><button class="btn-save" onclick="saveSection('expertise')">Save Expertise</button></div>
+      </div>
+
+      <!-- ── TIMELINE ──────────────────────────────────────── -->
+      <div id="section-timeline" class="section-view">
+        <div class="flex items-center justify-between mb-1">
+          <h2 class="text-xl font-bold">Career Timeline</h2>
+          <button class="btn-add" onclick="addTimeline()">+ Add Entry</button>
+        </div>
+        <p class="text-slate-400 text-sm mb-6">Your career history, newest first.</p>
+        <div id="timeline-list"></div>
+        <div class="mt-6"><button class="btn-save" onclick="saveSection('timeline')">Save Timeline</button></div>
+      </div>
+
+      <!-- ── PROJECTS ──────────────────────────────────────── -->
+      <div id="section-projects" class="section-view">
+        <div class="flex items-center justify-between mb-1">
+          <h2 class="text-xl font-bold">Selected Projects</h2>
+          <button class="btn-add" onclick="addProject()">+ Add Project</button>
+        </div>
+        <p class="text-slate-400 text-sm mb-6">Portfolio projects shown on the site.</p>
+        <div id="projects-list"></div>
+        <div class="mt-6"><button class="btn-save" onclick="saveSection('projects')">Save Projects</button></div>
+      </div>
+
+      <!-- ── VISION ────────────────────────────────────────── -->
+      <div id="section-vision" class="section-view">
+        <h2 class="text-xl font-bold mb-1">Vision & Mission</h2>
+        <p class="text-slate-400 text-sm mb-6">The dark quote section and vision/mission cards.</p>
+        <div class="space-y-4">
+          <div><label class="field-label">Hero Quote</label><textarea id="vision-quote" class="field-textarea" rows="3"></textarea></div>
+          <div><label class="field-label">Quote Attribution</label><input id="vision-attribution" class="field-input" type="text"></div>
+          <div><label class="field-label">Vision Card Text</label><textarea id="vision-visionText" class="field-textarea" rows="3"></textarea></div>
+          <div><label class="field-label">Mission Card Text</label><textarea id="vision-missionText" class="field-textarea" rows="4"></textarea></div>
+        </div>
+        <div class="mt-6"><button class="btn-save" onclick="saveSection('vision')">Save Vision & Mission</button></div>
+      </div>
+
+      <!-- ── CONTACT ───────────────────────────────────────── -->
+      <div id="section-contact" class="section-view">
+        <h2 class="text-xl font-bold mb-1">Contact Info</h2>
+        <p class="text-slate-400 text-sm mb-6">Your contact details shown in the contact section.</p>
+        <div class="space-y-6">
+          <div class="card">
+            <p class="text-sm font-semibold text-blue-400 mb-3">Phone / WhatsApp</p>
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="field-label">Phone Number</label><input id="contact-phone" class="field-input" type="text"></div>
+              <div><label class="field-label">WhatsApp URL</label><input id="contact-phoneWa" class="field-input" type="url"></div>
+            </div>
+            <div class="mt-3"><label class="field-label">Description</label><input id="contact-phoneDescription" class="field-input" type="text"></div>
+          </div>
+          <div class="card">
+            <p class="text-sm font-semibold text-blue-400 mb-3">Email</p>
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="field-label">Email Address</label><input id="contact-email" class="field-input" type="email"></div>
+              <div><label class="field-label">Description</label><input id="contact-emailDescription" class="field-input" type="text"></div>
+            </div>
+          </div>
+          <div class="card">
+            <p class="text-sm font-semibold text-blue-400 mb-3">Website</p>
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="field-label">Display Text</label><input id="contact-website" class="field-input" type="text"></div>
+              <div><label class="field-label">URL</label><input id="contact-websiteUrl" class="field-input" type="url"></div>
+            </div>
+            <div class="mt-3"><label class="field-label">Description</label><input id="contact-websiteDescription" class="field-input" type="text"></div>
+          </div>
+          <div class="card">
+            <p class="text-sm font-semibold text-blue-400 mb-3">Assistant</p>
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="field-label">Phone Number</label><input id="contact-assistantPhone" class="field-input" type="text"></div>
+              <div><label class="field-label">WhatsApp URL</label><input id="contact-assistantWa" class="field-input" type="url"></div>
+            </div>
+            <div class="mt-3"><label class="field-label">Description</label><input id="contact-assistantDescription" class="field-input" type="text"></div>
+          </div>
+        </div>
+        <div class="mt-6"><button class="btn-save" onclick="saveSection('contact')">Save Contact</button></div>
+      </div>
+
+      <!-- ── SETTINGS ──────────────────────────────────────── -->
+      <div id="section-settings" class="section-view">
+        <h2 class="text-xl font-bold mb-1">Settings</h2>
+        <p class="text-slate-400 text-sm mb-6">SEO metadata, footer text, and visitor counter.</p>
+        <div class="space-y-4">
+          <div><label class="field-label">Page Title (SEO)</label><input id="meta-title" class="field-input" type="text"></div>
+          <div><label class="field-label">Meta Description (SEO)</label><textarea id="meta-description" class="field-textarea" rows="2"></textarea></div>
+          <div><label class="field-label">Footer Copyright Text</label><input id="footer-copyright" class="field-input" type="text"></div>
+          <div>
+            <label class="field-label">Visitor Counter Offset</label>
+            <input id="footer-visitorOffset" class="field-input" type="number" min="0">
+            <p class="text-xs text-slate-500 mt-1">Number added to the live counter (e.g. 891 means counter starts at 891 + live count).</p>
+          </div>
+        </div>
+        <div class="mt-6 flex gap-3">
+          <button class="btn-save" onclick="saveSettings()">Save Settings</button>
+          <button onclick="resetVisitors()" style="background:rgba(239,68,68,0.15);color:#f87171;font-size:14px;font-weight:600;padding:10px 20px;border-radius:10px;border:1px solid rgba(239,68,68,0.2);cursor:pointer;">Reset Visitor Counter</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div id="toast"></div>
+
+  <script>
+    let content = {};
+
+    // ── Init ──────────────────────────────────────────────────
+    async function init() {
+      try {
+        const res = await fetch('/api/content');
+        if (res.status === 401) { window.location.href = '/admin/login'; return; }
+        content = await res.json();
+        populateAll();
+      } catch {
+        toast('Failed to load content', 'error');
+      }
+    }
+
+    // ── Navigation ─────────────────────────────────────────────
+    function showSection(name) {
+      document.querySelectorAll('.section-view').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+      document.getElementById('section-' + name).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+
+    function viewSite() { window.open('/', '_blank'); }
+
+    async function logout() {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      window.location.href = '/admin/login';
+    }
+
+    // ── Populate all forms ─────────────────────────────────────
+    function populateAll() {
+      // Hero
+      const h = content.hero || {};
+      setVal('hero-avatarUrl', h.avatarUrl);
+      setVal('hero-name', h.name);
+      setVal('hero-location', h.location);
+      setVal('hero-title', h.title);
+      setVal('hero-bio', h.bio);
+      setVal('hero-ctaLabel', h.ctaLabel);
+      setVal('hero-ctaSecondaryLabel', h.ctaSecondaryLabel);
+      setVal('hero-ctaSecondaryUrl', h.ctaSecondaryUrl);
+
+      // About
+      const a = content.about || {};
+      setVal('about-heading', a.heading);
+      setVal('about-p1', (a.paragraphs || [])[0] || '');
+      setVal('about-p2', (a.paragraphs || [])[1] || '');
+      setVal('about-p3', (a.paragraphs || [])[2] || '');
+      setVal('about-shortBio', a.shortBio);
+      setVal('about-storyTitle', a.storyTitle);
+      setVal('about-storyText', a.storyText);
+      setVal('about-company', a.company);
+      setVal('about-focus', a.focus);
+      setVal('about-specialty', a.specialty);
+
+      // Expertise
+      renderExpertiseList(content.expertise || []);
+
+      // Timeline
+      renderTimelineList(content.timeline || []);
+
+      // Projects
+      renderProjectsList(content.projects || []);
+
+      // Vision
+      const v = content.vision || {};
+      setVal('vision-quote', v.quote);
+      setVal('vision-attribution', v.attribution);
+      setVal('vision-visionText', v.visionText);
+      setVal('vision-missionText', v.missionText);
+
+      // Contact
+      const c = content.contact || {};
+      setVal('contact-phone', c.phone);
+      setVal('contact-phoneWa', c.phoneWa);
+      setVal('contact-phoneDescription', c.phoneDescription);
+      setVal('contact-email', c.email);
+      setVal('contact-emailDescription', c.emailDescription);
+      setVal('contact-website', c.website);
+      setVal('contact-websiteUrl', c.websiteUrl);
+      setVal('contact-websiteDescription', c.websiteDescription);
+      setVal('contact-assistantPhone', c.assistantPhone);
+      setVal('contact-assistantWa', c.assistantWa);
+      setVal('contact-assistantDescription', c.assistantDescription);
+
+      // Settings
+      const m = content.meta || {};
+      const f = content.footer || {};
+      setVal('meta-title', m.title);
+      setVal('meta-description', m.description);
+      setVal('footer-copyright', f.copyright);
+      setVal('footer-visitorOffset', f.visitorOffset ?? 0);
+    }
+
+    // ── Expertise list ─────────────────────────────────────────
+    function renderExpertiseList(items) {
+      const container = document.getElementById('expertise-list');
+      container.innerHTML = items.map((item, i) => `
+        <div class="card" id="exp-${i}">
+          <div class="flex justify-between items-center mb-3">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Service ${i + 1}</span>
+            <button class="btn-danger" onclick="removeExpertise(${i})">Remove</button>
+          </div>
+          <div class="space-y-3">
+            <div><label class="field-label">Title</label><input class="field-input exp-title" data-idx="${i}" type="text" value="${escHtml(item.title || '')}"></div>
+            <div><label class="field-label">Description</label><textarea class="field-textarea exp-desc" data-idx="${i}" rows="2">${escHtml(item.description || '')}</textarea></div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addExpertise() {
+      content.expertise = content.expertise || [];
+      content.expertise.push({ title: '', description: '', icon: 'code' });
+      renderExpertiseList(content.expertise);
+    }
+
+    function removeExpertise(i) {
+      content.expertise.splice(i, 1);
+      renderExpertiseList(content.expertise);
+    }
+
+    function collectExpertise() {
+      const titles = document.querySelectorAll('.exp-title');
+      const descs  = document.querySelectorAll('.exp-desc');
+      return Array.from(titles).map((el, i) => ({
+        title: el.value,
+        description: descs[i].value,
+        icon: (content.expertise[i] || {}).icon || 'code'
+      }));
+    }
+
+    // ── Timeline list ──────────────────────────────────────────
+    function renderTimelineList(items) {
+      const container = document.getElementById('timeline-list');
+      container.innerHTML = items.map((item, i) => `
+        <div class="card">
+          <div class="flex justify-between items-center mb-3">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Entry ${i + 1}</span>
+            <button class="btn-danger" onclick="removeTimeline(${i})">Remove</button>
+          </div>
+          <div class="space-y-3">
+            <div class="grid grid-cols-3 gap-3">
+              <div><label class="field-label">Period</label><input class="field-input tl-period" data-idx="${i}" type="text" value="${escHtml(item.period || '')}"></div>
+              <div><label class="field-label">Role</label><input class="field-input tl-role" data-idx="${i}" type="text" value="${escHtml(item.role || '')}"></div>
+              <div><label class="field-label">Company</label><input class="field-input tl-company" data-idx="${i}" type="text" value="${escHtml(item.company || '')}"></div>
+            </div>
+            <div><label class="field-label">Description</label><textarea class="field-textarea tl-desc" data-idx="${i}" rows="3">${escHtml(item.description || '')}</textarea></div>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+              <input type="checkbox" class="tl-current" data-idx="${i}" ${item.current ? 'checked' : ''} style="accent-color:#3b82f6;width:16px;height:16px;">
+              <span class="text-sm text-slate-300">Current position</span>
+            </label>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addTimeline() {
+      content.timeline = content.timeline || [];
+      content.timeline.push({ period: '', role: '', company: '', description: '', current: false });
+      renderTimelineList(content.timeline);
+    }
+
+    function removeTimeline(i) {
+      content.timeline.splice(i, 1);
+      renderTimelineList(content.timeline);
+    }
+
+    function collectTimeline() {
+      const periods   = document.querySelectorAll('.tl-period');
+      const roles     = document.querySelectorAll('.tl-role');
+      const companies = document.querySelectorAll('.tl-company');
+      const descs     = document.querySelectorAll('.tl-desc');
+      const currents  = document.querySelectorAll('.tl-current');
+      return Array.from(periods).map((el, i) => ({
+        period: el.value,
+        role: roles[i].value,
+        company: companies[i].value,
+        description: descs[i].value,
+        current: currents[i].checked
+      }));
+    }
+
+    // ── Projects list ──────────────────────────────────────────
+    function renderProjectsList(items) {
+      const container = document.getElementById('projects-list');
+      container.innerHTML = items.map((item, i) => `
+        <div class="card">
+          <div class="flex justify-between items-center mb-3">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Project ${i + 1}</span>
+            <button class="btn-danger" onclick="removeProject(${i})">Remove</button>
+          </div>
+          <div class="space-y-3">
+            <div class="grid grid-cols-2 gap-3">
+              <div><label class="field-label">Title</label><input class="field-input pj-title" data-idx="${i}" type="text" value="${escHtml(item.title || '')}"></div>
+              <div><label class="field-label">Category Badge</label><input class="field-input pj-category" data-idx="${i}" type="text" value="${escHtml(item.category || '')}"></div>
+            </div>
+            <div><label class="field-label">Description</label><textarea class="field-textarea pj-desc" data-idx="${i}" rows="3">${escHtml(item.description || '')}</textarea></div>
+            <div><label class="field-label">Tags (comma-separated)</label><input class="field-input pj-tags" data-idx="${i}" type="text" value="${escHtml((item.tags || []).join(', '))}"></div>
+            <div class="grid grid-cols-2 gap-3">
+              <div><label class="field-label">Link Label</label><input class="field-input pj-linkLabel" data-idx="${i}" type="text" value="${escHtml(item.linkLabel || '')}"></div>
+              <div><label class="field-label">Link URL</label><input class="field-input pj-linkUrl" data-idx="${i}" type="url" value="${escHtml(item.linkUrl || '')}"></div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addProject() {
+      content.projects = content.projects || [];
+      content.projects.push({ title: '', category: '', description: '', tags: [], linkLabel: 'Learn more', linkUrl: '', gradient: 'from-blue-600-to-cyan-500' });
+      renderProjectsList(content.projects);
+    }
+
+    function removeProject(i) {
+      content.projects.splice(i, 1);
+      renderProjectsList(content.projects);
+    }
+
+    function collectProjects() {
+      const titles      = document.querySelectorAll('.pj-title');
+      const categories  = document.querySelectorAll('.pj-category');
+      const descs       = document.querySelectorAll('.pj-desc');
+      const tagInputs   = document.querySelectorAll('.pj-tags');
+      const linkLabels  = document.querySelectorAll('.pj-linkLabel');
+      const linkUrls    = document.querySelectorAll('.pj-linkUrl');
+      return Array.from(titles).map((el, i) => ({
+        title: el.value,
+        category: categories[i].value,
+        description: descs[i].value,
+        tags: tagInputs[i].value.split(',').map(t => t.trim()).filter(Boolean),
+        linkLabel: linkLabels[i].value,
+        linkUrl: linkUrls[i].value,
+        gradient: (content.projects[i] || {}).gradient || 'from-blue-600-to-cyan-500'
+      }));
+    }
+
+    // ── Save sections ──────────────────────────────────────────
+    async function saveSection(section) {
+      // Collect fresh data
+      if (section === 'hero') {
+        content.hero = {
+          avatarUrl: getVal('hero-avatarUrl'),
+          name: getVal('hero-name'),
+          location: getVal('hero-location'),
+          title: getVal('hero-title'),
+          bio: getVal('hero-bio'),
+          ctaLabel: getVal('hero-ctaLabel'),
+          ctaSecondaryLabel: getVal('hero-ctaSecondaryLabel'),
+          ctaSecondaryUrl: getVal('hero-ctaSecondaryUrl')
+        };
+      } else if (section === 'about') {
+        content.about = {
+          heading: getVal('about-heading'),
+          paragraphs: [getVal('about-p1'), getVal('about-p2'), getVal('about-p3')],
+          shortBio: getVal('about-shortBio'),
+          storyTitle: getVal('about-storyTitle'),
+          storyText: getVal('about-storyText'),
+          company: getVal('about-company'),
+          focus: getVal('about-focus'),
+          specialty: getVal('about-specialty')
+        };
+      } else if (section === 'expertise') {
+        content.expertise = collectExpertise();
+      } else if (section === 'timeline') {
+        content.timeline = collectTimeline();
+      } else if (section === 'projects') {
+        content.projects = collectProjects();
+      } else if (section === 'vision') {
+        content.vision = {
+          quote: getVal('vision-quote'),
+          attribution: getVal('vision-attribution'),
+          visionText: getVal('vision-visionText'),
+          missionText: getVal('vision-missionText')
+        };
+      } else if (section === 'contact') {
+        content.contact = {
+          phone: getVal('contact-phone'),
+          phoneWa: getVal('contact-phoneWa'),
+          phoneDescription: getVal('contact-phoneDescription'),
+          email: getVal('contact-email'),
+          emailDescription: getVal('contact-emailDescription'),
+          website: getVal('contact-website'),
+          websiteUrl: getVal('contact-websiteUrl'),
+          websiteDescription: getVal('contact-websiteDescription'),
+          assistantPhone: getVal('contact-assistantPhone'),
+          assistantWa: getVal('contact-assistantWa'),
+          assistantDescription: getVal('contact-assistantDescription')
+        };
+      }
+
+      await persist();
+    }
+
+    async function saveSettings() {
+      content.meta = {
+        title: getVal('meta-title'),
+        description: getVal('meta-description')
+      };
+      content.footer = {
+        copyright: getVal('footer-copyright'),
+        visitorOffset: parseInt(getVal('footer-visitorOffset')) || 0
+      };
+      await persist();
+    }
+
+    async function persist() {
+      try {
+        const res = await fetch('/api/content', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(content)
+        });
+        const data = await res.json();
+        data.success ? toast('Saved successfully!', 'success') : toast(data.error || 'Save failed', 'error');
+      } catch {
+        toast('Connection error', 'error');
+      }
+    }
+
+    async function resetVisitors() {
+      if (!confirm('Reset visitor counter to 0?')) return;
+      const res = await fetch('/api/visitors/reset', { method: 'POST' });
+      const data = await res.json();
+      data.success ? toast('Visitor counter reset', 'success') : toast('Reset failed', 'error');
+    }
+
+    // ── Toast ──────────────────────────────────────────────────
+    let toastTimer;
+    function toast(msg, type = 'success') {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.className = type;
+      el.style.display = 'block';
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { el.style.display = 'none'; }, 3000);
+    }
+
+    // ── Helpers ────────────────────────────────────────────────
+    function setVal(id, val) {
+      const el = document.getElementById(id);
+      if (el) el.value = val ?? '';
+    }
+    function getVal(id) {
+      const el = document.getElementById(id);
+      return el ? el.value : '';
+    }
+    function escHtml(str) {
+      return String(str).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    init();
+  </script>
+</body>
+</html>
