@@ -678,9 +678,11 @@
     (function () {
       const key = 'wp_visited';
       const countEl = document.getElementById('visitor-count');
-      const localUrl = sessionStorage.getItem(key) ? '/api/visitors?r=1' : '/api/visitors';
-      const externalUrl = 'https://api.countapi.xyz/hit/waynepoon-me/visits';
       const OFFSET = 891;
+      const isReturn = sessionStorage.getItem(key);
+      const counterUrl = isReturn
+        ? 'https://api.counterapi.dev/v1/waynepoon-me/visits'
+        : 'https://api.counterapi.dev/v1/waynepoon-me/visits/up';
 
       function renderCount(value) {
         if (countEl) countEl.textContent = (value + OFFSET).toLocaleString();
@@ -690,37 +692,20 @@
         sessionStorage.setItem(key, '1');
       }
 
-      function fetchExternalCount() {
-        return fetch(externalUrl)
-          .then(r => {
-            if (!r.ok) throw new Error('External counter unavailable');
-            return r.json();
-          })
-          .then(data => {
-            const value = typeof data.value === 'number' ? data.value : data?.count;
-            if (typeof value === 'number') {
-              markVisited();
-              renderCount(value);
-            } else {
-              throw new Error('Invalid external counter response');
-            }
-          });
-      }
-
-      fetch(localUrl)
+      fetch(counterUrl)
         .then(r => {
-          if (!r.ok) throw new Error('Local counter unavailable');
+          if (!r.ok) throw new Error('Counter unavailable');
           return r.json();
         })
         .then(data => {
-          if (typeof data.total === 'number') {
+          const value = typeof data.count === 'number' ? data.count : data?.value;
+          if (typeof value === 'number') {
             markVisited();
-            renderCount(data.total);
+            renderCount(value);
           } else {
-            throw new Error('Invalid local counter response');
+            throw new Error('Invalid counter response');
           }
         })
-        .catch(() => fetchExternalCount())
         .catch(() => {
           if (countEl) countEl.textContent = '—';
         });
